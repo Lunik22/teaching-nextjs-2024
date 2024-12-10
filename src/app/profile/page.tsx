@@ -36,6 +36,7 @@ export default async function UserProfile() {
         <p>{user.username}</p>
         <p>{user.displayName}</p>
         <Link href="/profile/posts">My Posts</Link>
+        <Link href="/profile/edit" >Edit my profile</Link>
       </div>
     </div>
   );
