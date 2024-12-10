@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createDB } from "../../../lib/db";
+import { createDB } from "../../../../lib/db";
 import { DeletePostButton } from "./DeletePostButton";
 import { NewCommentForm } from "./NewCommentForm";
 

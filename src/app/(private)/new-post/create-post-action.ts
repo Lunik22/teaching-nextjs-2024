@@ -1,6 +1,6 @@
 "use server";
 
-import { createDB } from "../../lib/db";
+import { createDB } from "../../../lib/db";
 import { redirect } from "next/navigation";
 
 export async function createPost(content: string) {

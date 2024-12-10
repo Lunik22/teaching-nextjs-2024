@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Link from "next/link";
 import "./globals.css";
 import { LogoutButton } from "./LogoutButton";
+import { checkAuth } from "../lib/auth";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,6 +26,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const loggedIn = checkAuth();
+
   return (
     <html lang="en">
       <body
@@ -38,19 +41,27 @@ export default function RootLayout({
           </div>
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
-              <li>
-                <Link href="/new-post">New Post</Link>
-              </li>
-              <li>
-                <Link href="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link href="/login">Login</Link>
-              </li>
-              <li>
-                <LogoutButton />
-              </li>
-            </ul>
+              
+              {loggedIn == null ? (
+                <li>
+                  <Link href="/login">Login</Link>
+                </li>
+              ) : null}
+              {loggedIn != null ? (
+                <>
+                <li>
+                  <Link href="/new-post">New Post</Link>
+                </li>
+                <li>
+                  <Link href="/profile">Profile</Link>
+                </li>
+              
+                <li>
+                  <LogoutButton />
+                </li>
+                </>
+                ) : null}
+            </ul> 
           </div>
         </div>
         <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">

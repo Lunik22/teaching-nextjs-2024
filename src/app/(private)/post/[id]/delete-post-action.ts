@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { createDB } from "../../../lib/db";
+import { createDB } from "../../../../lib/db";
 
 export async function deletePost(id: number) {
   console.log("Deleting post with id:", id);

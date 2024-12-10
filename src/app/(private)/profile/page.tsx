@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { createDB } from "../../lib/db";
+import { createDB } from "../../../lib/db";
 
 export default async function UserProfile() {
   const cookieStore = cookies();
@@ -36,7 +36,7 @@ export default async function UserProfile() {
         <p>{user.username}</p>
         <p>{user.displayName}</p>
         <Link href="/profile/posts">My Posts</Link>
-        <Link href="/profile/edit" >Edit my profile</Link>
+        <Link href="/profile/edit">Edit my profile</Link>
       </div>
     </div>
   );

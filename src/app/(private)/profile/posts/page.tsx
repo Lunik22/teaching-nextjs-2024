@@ -1,4 +1,4 @@
-import { createDB } from "../../../lib/db";
+import { createDB } from "../../../../lib/db";
 import Link from "next/link";
 
 export default async function UserPosts() {

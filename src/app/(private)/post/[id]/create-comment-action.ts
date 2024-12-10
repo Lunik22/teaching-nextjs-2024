@@ -1,6 +1,6 @@
 "use server";
 
-import { createDB } from "../../../lib/db";
+import { createDB } from "../../../../lib/db";
 import { revalidatePath } from "next/cache";
 
 export async function createComment(postId: number, content: string) {
