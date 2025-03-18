@@ -1,5 +1,9 @@
 import { assertAuth } from "../../../../lib/auth";
 import { createDB } from "../../../../lib/db";
+import { DeleteMessageButton } from "./DeleteMessageButton";
+import MessageBubble from "./MessageComponent";
+import { SendMessageForm } from "./SendMessageForm";
+
 
 type Props = { params: { id: string } };
 
@@ -31,15 +35,19 @@ export default async function MessagesUserPage(props: Props) {
   return (
     <div className="card bg-base-100 drop-shadow-md">
       <div className="card-body">
+        <SendMessageForm recipientId={id} />
         {messages.map((m) => (
-          <div
-            key={m.id}
-            className={`chat ${
-              m.fromUserId === userId ? "chat-end" : "chat-start"
-            }`}
-          >
-            <div className="chat-bubble chat-bubble-accent">{m.message}</div>
-          </div>
+          <>
+            <MessageBubble
+              key={m.id}
+              fromUserId={m.fromUserId}
+              userId={userId}
+              message={m.message}
+              id={m.id}
+              createdAt={m.createdAt}
+            />
+            <DeleteMessageButton recipientId={m.toUserId} messageId={m.id} userId={userId}/>
+          </>
         ))}
       </div>
     </div>

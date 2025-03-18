@@ -33,10 +33,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-blue-700/0">
           <div className="flex-1">
             <Link href="/" className="btn btn-ghost text-xl">
-              Social Network
+              Smer - Slovenska socialna demokracia
             </Link>
           </div>
           <div className="flex-none">
@@ -55,6 +55,9 @@ export default function RootLayout({
                 <>
                   <li>
                     <Link href="/new-post">New Post</Link>
+                  </li>
+                  <li>
+                    <Link href="/marketplace">Marketplace</Link>
                   </li>
                   <li>
                     <Link href="/profile">Profile</Link>

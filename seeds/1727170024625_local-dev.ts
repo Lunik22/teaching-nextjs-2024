@@ -7,6 +7,7 @@ export async function seed(db: Kysely<DB>): Promise<void> {
   await db.deleteFrom("comments").execute();
   await db.deleteFrom("posts").execute();
   await db.deleteFrom("users").execute();
+  await db.deleteFrom("marketplace").execute();
 
   const numberOfUsers = 20;
 
@@ -107,6 +108,23 @@ export async function seed(db: Kysely<DB>): Promise<void> {
           })
           .execute();
       }
+    }
+  }
+
+  for (const user of users) {
+    const numberOfItems = faker.number.int({ min: 0, max: 30 });
+    for (let i = 0; i < numberOfItems; i++){
+      await db
+        .insertInto("marketplace")
+        .values({
+          userId: user.id,
+          productName: faker.commerce.productName(),
+          description: faker.commerce.productDescription(),
+          price: parseFloat(faker.commerce.price()),
+          category: faker.commerce.department(),
+          createdAt: faker.date.recent({ days: 10 }).getTime(),
+        })
+        .execute();
     }
   }
 }

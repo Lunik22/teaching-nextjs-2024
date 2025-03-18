@@ -14,9 +14,9 @@ export default async function Home() {
     .execute();
 
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-8">
       {posts.map((p) => (
-        <div key={p.id} className="card bg-base-100 w-96 drop-shadow-md">
+        <div key={p.id} className="card bg-blue-700 w-96 drop-shadow-md mb-4">
           <div className="card-body">
             <Link href={`/post/${p.id}`}>
               <p>{p.content}</p>
