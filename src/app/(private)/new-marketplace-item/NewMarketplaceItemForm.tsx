@@ -45,15 +45,12 @@ export function NewMarketplaceItemForm() {
           placeholder=""
         />
       </label>
-      <label className="mb-4 input input-bordered flex items-center gap-2">
-        Category
-        <input
-          {...register("category")}
-          type="text"
-          className="grow"
-          placeholder=""
-        />
-      </label>
+      <select defaultValue="Pick a category" className="select select-primary my-4" {...register("category")}>
+        <option disabled={true}>Pick a category</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Cars">Cars</option>
+        <option value="Furniture">Furniture</option>
+      </select>
       <input className="btn btn-sm btn-outline" type="submit" value="Create" />
     </form>
   );
